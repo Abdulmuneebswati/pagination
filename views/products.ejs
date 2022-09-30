@@ -1,0 +1,55 @@
+<%-include("./main/header.ejs") %>
+
+<div class="container bg-light py-5">
+    <div class="row">
+      <% for(var i = 0; i < (data.length); i++){%>
+        <div class="col-sm-4 mb-2">
+          <div class="card">
+            <div class="card-body">
+                <img src="<%= data[i].image %>" class="img-thumbnail" alt="...">
+              <h5 class="card-title"><%= data[i].name %></h5>
+              <p class="card-text">Description:<%= data[i].description %></p>
+              <p class="card-text">Category:<%= data[i].category %></p>
+              
+            </div>
+          </div>
+        </div>
+        <%}%>
+        
+        <ul class="pagination d-flex justify-content-center mt-2 ">
+            <% if (Number(page) == 1) {%>
+                <li class="page-item disabled">
+                  <a class="page-link">Previous</a>
+                </li>
+                <%}else{%>
+                    <li class="page-item">
+                        <a class="page-link" href="/products/<%= Number(page) - 1%>">Previous</a>
+                      </li>
+                    <%}%>
+
+
+            <li class="page-item disabled"><a class="page-link"><%=page%>/<%=totalPage%></a></li>
+            
+            
+            <% if (Number(page) == totalPage) {%>
+            <li class="page-item disabled">
+              <a class="page-link">Next</a>
+            </li>
+            <%}else{%>
+                <li class="page-item">
+                    <a class="page-link" href="/products/<%= Number(page) + 1%>">Next</a>
+                  </li>
+                <%}%>
+          </ul>
+ 
+
+</div>
+</div>
+
+
+
+
+
+
+
+<%-include("./main/footer.ejs") %>
